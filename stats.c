@@ -29,12 +29,12 @@
  * misuse of this material.
  *
  *****************************************************************************/
-
 #include <stdio.h>
 #include "stats.h"
 
 /* Size of the Data Set */
 #define SIZE (40)
+#define NULL (0)
 
 void main()
 {
@@ -44,22 +44,159 @@ void main()
                               200, 122, 150, 90, 92, 87, 177, 244,
                               201, 6, 12, 60, 8, 2, 5, 67,
                               7, 87, 250, 230, 99, 3, 100, 90};
-
+  unsigned char value_min, value_max, value_mean, value_median = 0;
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
+  printf("Hola printf, soy Pablo:( %d )\n", test[0]);
+
+  value_min = find_minimum(test, SIZE);
+  printf("** Result find_minimum: ( %d ) **\n", value_min);
+
+  value_max = find_maximum(test, SIZE);
+  printf("** Result find_maximum: ( %d ) **\n", value_max);
+
+  value_mean = find_mean(test, SIZE);
+  printf("** Result find_mean: ( %d ) **\n", value_mean);
+
+  sort_array(test, SIZE);
 }
 
 /* Add other Implementation File Code Here */
-void sort_array(unsigned char *ptr_numbers, unsigned char length_ptr) {}
+void sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
+{
+  unsigned char value = 0;
+  unsigned char *ptr_thor = ptr_numbers;
+  unsigned char value_ant = 0;
+
+  if (ptr_numbers == NULL)
+  {
+    return 0;
+  }
+
+  for (int j = 0; j < 5; j++)
+  {
+    value = 0;
+    for (int i = 0; i < length_ptr; i++)
+    {
+      if (i == 0)
+      {
+        value = *ptr_numbers;
+        value_ant = value + 1;
+      }
+
+      if ((*ptr_numbers >= value) && (*ptr_numbers < value_ant))
+      {
+        value = *ptr_numbers;
+      }
+      printf("find_maximum sort: itaration: (%d), value: (%d) \n", i, value);
+      ptr_numbers++;
+    }
+
+    *ptr_thor = value;
+    value_ant = value;
+    printf("sort_array: itaration: (%d), value: (%d) \n", j, *ptr_thor);
+    ptr_thor++;
+  }
+}
 
 void print_statistics(unsigned char *ptr_numbers, unsigned char length_ptr) {}
 
 void print_array(unsigned char *ptr_numbers, unsigned char length_ptr) {}
 
-unsigned char find_minimum(unsigned char *ptr_numbers, unsigned char length_ptr) {}
+unsigned char find_minimum(unsigned char *ptr_numbers, unsigned char length_ptr)
+{
 
-unsigned char find_maximum(unsigned char *ptr_numbers, unsigned char length_ptr) {}
+  unsigned char value = 0;
 
-unsigned char find_median(unsigned char *ptr_numbers, unsigned char length_ptr) {}
+  if (ptr_numbers == NULL)
+  {
+    return 0;
+  }
 
-unsigned char find_mean(unsigned char *ptr_numbers, unsigned char length_ptr) {}
+  for (int i = 0; i < length_ptr; i++)
+  {
+    if (i == 0)
+    {
+      value = *ptr_numbers;
+    }
+
+    if (*ptr_numbers <= value)
+    {
+      value = *ptr_numbers;
+    }
+    // printf("find_minimum: itaration: (%d), value: (%d) \n", i, *ptr_numbers);
+    ptr_numbers++;
+  }
+
+  return value;
+}
+
+unsigned char find_maximum(unsigned char *ptr_numbers, unsigned char length_ptr)
+{
+  unsigned char value = 0;
+
+  if (ptr_numbers == NULL)
+  {
+    return 0;
+  }
+
+  for (int i = 0; i < length_ptr; i++)
+  {
+    if (i == 0)
+    {
+      value = *ptr_numbers;
+    }
+
+    if (*ptr_numbers >= value)
+    {
+      value = *ptr_numbers;
+    }
+    // printf("find_maximum: itaration: (%d), value: (%d) \n", i, *ptr_numbers);
+    ptr_numbers++;
+  }
+  return value;
+}
+
+unsigned char find_median(unsigned char *ptr_numbers, unsigned char length_ptr)
+{
+  unsigned char value = 0;
+
+  if (ptr_numbers == NULL)
+  {
+    return 0;
+  }
+
+  for (int i = 0; i < length_ptr; i++)
+  {
+    if (i == 0)
+    {
+      value = *ptr_numbers;
+    }
+
+    if (*ptr_numbers >= value)
+    {
+      value = *ptr_numbers;
+    }
+    // printf("find_maximum: itaration: (%d), value: (%d) \n", i, *ptr_numbers);
+    ptr_numbers++;
+  }
+  return value;
+}
+
+unsigned char find_mean(unsigned char *ptr_numbers, unsigned char length_ptr)
+{
+  unsigned int value = 0;
+
+  if (ptr_numbers == NULL)
+  {
+    return 0;
+  }
+
+  for (int i = 0; i < length_ptr; i++)
+  {
+    value += *ptr_numbers;
+    printf("find_mean: itaration: (%d), value: (%d) \n", i, value);
+    ptr_numbers++;
+  }
+  return (value / length_ptr);
+}
