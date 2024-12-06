@@ -64,9 +64,15 @@ void main()
 /* Add other Implementation File Code Here */
 void sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
 {
-  unsigned char value = 0;
-  unsigned char *ptr_thor = ptr_numbers;
-  unsigned char value_ant = 0;
+  unsigned char value, value_ant = 0;
+  unsigned char *ptr_thor;
+  ptr_thor = ptr_numbers;
+
+  unsigned char* add_init;
+ 
+  add_init =(&ptr_numbers[0]);
+
+  printf("**sort_array, address initial: (%d)\n", add_init);
 
   if (ptr_numbers == NULL)
   {
@@ -76,6 +82,7 @@ void sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
   for (int j = 0; j < 5; j++)
   {
     value = 0;
+
     for (int i = 0; i < length_ptr; i++)
     {
       if (i == 0)
@@ -84,17 +91,19 @@ void sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
         value_ant = value + 1;
       }
 
-      if ((*ptr_numbers >= value) && (*ptr_numbers < value_ant))
+      if ((*ptr_numbers >= value) && (value <= value_ant))
       {
         value = *ptr_numbers;
+        value_ant = value;
       }
       printf("find_maximum sort: itaration: (%d), value: (%d) \n", i, value);
       ptr_numbers++;
     }
 
     *ptr_thor = value;
-    value_ant = value;
-    printf("sort_array: itaration: (%d), value: (%d) \n", j, *ptr_thor);
+    printf("sort_array: itaration: (%d), value: (%d), value_ant (%d) \n", j, *ptr_thor, value_ant);
+    ptr_numbers = &add_init;
+    printf("Address ptr_numbers: (%d)\n", &ptr_numbers);
     ptr_thor++;
   }
 }
@@ -195,7 +204,7 @@ unsigned char find_mean(unsigned char *ptr_numbers, unsigned char length_ptr)
   for (int i = 0; i < length_ptr; i++)
   {
     value += *ptr_numbers;
-    printf("find_mean: itaration: (%d), value: (%d) \n", i, value);
+    // printf("find_mean: itaration: (%d), value: (%d) \n", i, value);
     ptr_numbers++;
   }
   return (value / length_ptr);
