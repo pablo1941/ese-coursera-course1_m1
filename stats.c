@@ -1,5 +1,6 @@
 /**************************************************************************/ /**
                                                                               * @file stats.h
+                                                                              * @file stats.h
                                                                               * @brief Example C programming File
                                                                               *
                                                                               * @author <Pablo Rodriguez>
@@ -61,66 +62,56 @@ void main()
   sort_array(test, SIZE);
 }
 
-/* Add other Implementation File Code Here */
+/* sort_array function */
 void sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
 {
-  unsigned char value, value_ant = 0;
+  unsigned char value, max_ant, pos = 0;
   unsigned char array_thor[SIZE] = {};
-
-  // printf("**sort_array, address initial: (%d)\n", &ptr_numbers);
 
   if (ptr_numbers == NULL)
   {
     return 0;
   }
 
-  // for (int j = 0; j < length_ptr; j++)
-  for (int j = 0; j < 15; j++)
+  for (int j = 0; j < length_ptr; j++)
+  // for (int j = 0; j < 15; j++)
   {
-
     for (int i = 0; i < length_ptr; i++)
     {
       if (j == 0)
       {
-
-        if (i == 0)
-        {
-          value = ptr_numbers[i];
-        }
-
         if ((ptr_numbers[i] >= value))
         {
           value = ptr_numbers[i];
+          pos = i;
         }
       }
       else
       {
-
-        if ((ptr_numbers[i] >= value) && (ptr_numbers[i] < value_ant))
+        if ((ptr_numbers[i] >= value) && (ptr_numbers[i] <= max_ant))
+        // if ( (ptr_numbers[i] <= max_ant))
         {
           value = ptr_numbers[i];
+          pos = i;
         }
       }
-      printf("find_maximum sort: iteration{j,i}: (%d,%d), ptr_numbers: (%d), value: (%d), previous max:(%d) \n", j, i, ptr_numbers[i], value, value_ant);
+      // printf("find_maximum sort: iteration{j,i}: (%d,%d), ptr_numbers: (%d), value: (%d), previous max:(%d) \n", j, i, ptr_numbers[i], value, max_ant);
     }
-
+    // Update values
+    ptr_numbers[pos] = 0;
     array_thor[j] = value;
-    printf("sort_array: iteration: (%d), array_thor: (%d), value_ant (%d) \n", j, array_thor[j], value_ant);
-    value_ant = value;
+    printf("sort_array: iteration: (%d), array_thor: (%d), max_ant (%d) \n", j, array_thor[j], max_ant);
+    max_ant = value;
     value = 0;
-
-    // ptr_numbers = &add_init;
-    // printf("Address ptr_numbers: (%d), value ptr_numbers: (%d)\n", &ptr_numbers, *ptr_numbers);
   }
 }
-
+/* print_statistics function */
 void print_statistics(unsigned char *ptr_numbers, unsigned char length_ptr) {}
-
+/* print_array function */
 void print_array(unsigned char *ptr_numbers, unsigned char length_ptr) {}
-
+/* find_minimum function */
 unsigned char find_minimum(unsigned char *ptr_numbers, unsigned char length_ptr)
 {
-
   unsigned char value = 0;
 
   if (ptr_numbers == NULL)
@@ -145,7 +136,7 @@ unsigned char find_minimum(unsigned char *ptr_numbers, unsigned char length_ptr)
 
   return value;
 }
-
+/* find_maximum function */
 unsigned char find_maximum(unsigned char *ptr_numbers, unsigned char length_ptr)
 {
   unsigned char value = 0;
@@ -171,7 +162,7 @@ unsigned char find_maximum(unsigned char *ptr_numbers, unsigned char length_ptr)
   }
   return value;
 }
-
+/* find_median function */
 unsigned char find_median(unsigned char *ptr_numbers, unsigned char length_ptr)
 {
   unsigned char value = 0;
@@ -197,7 +188,7 @@ unsigned char find_median(unsigned char *ptr_numbers, unsigned char length_ptr)
   }
   return value;
 }
-
+/* find_mean function */
 unsigned char find_mean(unsigned char *ptr_numbers, unsigned char length_ptr)
 {
   unsigned int value = 0;
