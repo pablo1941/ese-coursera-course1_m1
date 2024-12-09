@@ -34,7 +34,7 @@
 
 /* Size of the Data Set */
 #define SIZE (40)
-#define NULL (0)
+// #define NULL (0)
 
 void main()
 {
@@ -65,46 +65,52 @@ void main()
 void sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
 {
   unsigned char value, value_ant = 0;
-  unsigned char *ptr_thor;
-  ptr_thor = ptr_numbers;
+  unsigned char array_thor[SIZE] = {};
 
-  unsigned char* add_init;
- 
-  add_init =(&ptr_numbers[0]);
-
-  printf("**sort_array, address initial: (%d)\n", add_init);
+  // printf("**sort_array, address initial: (%d)\n", &ptr_numbers);
 
   if (ptr_numbers == NULL)
   {
     return 0;
   }
 
-  for (int j = 0; j < 5; j++)
+  // for (int j = 0; j < length_ptr; j++)
+  for (int j = 0; j < 15; j++)
   {
-    value = 0;
 
     for (int i = 0; i < length_ptr; i++)
     {
-      if (i == 0)
+      if (j == 0)
       {
-        value = *ptr_numbers;
-        value_ant = value + 1;
-      }
 
-      if ((*ptr_numbers >= value) && (value <= value_ant))
-      {
-        value = *ptr_numbers;
-        value_ant = value;
+        if (i == 0)
+        {
+          value = ptr_numbers[i];
+        }
+
+        if ((ptr_numbers[i] >= value))
+        {
+          value = ptr_numbers[i];
+        }
       }
-      printf("find_maximum sort: itaration: (%d), value: (%d) \n", i, value);
-      ptr_numbers++;
+      else
+      {
+
+        if ((ptr_numbers[i] >= value) && (ptr_numbers[i] < value_ant))
+        {
+          value = ptr_numbers[i];
+        }
+      }
+      printf("find_maximum sort: iteration{j,i}: (%d,%d), ptr_numbers: (%d), value: (%d), previous max:(%d) \n", j, i, ptr_numbers[i], value, value_ant);
     }
 
-    *ptr_thor = value;
-    printf("sort_array: itaration: (%d), value: (%d), value_ant (%d) \n", j, *ptr_thor, value_ant);
-    ptr_numbers = &add_init;
-    printf("Address ptr_numbers: (%d)\n", &ptr_numbers);
-    ptr_thor++;
+    array_thor[j] = value;
+    printf("sort_array: iteration: (%d), array_thor: (%d), value_ant (%d) \n", j, array_thor[j], value_ant);
+    value_ant = value;
+    value = 0;
+
+    // ptr_numbers = &add_init;
+    // printf("Address ptr_numbers: (%d), value ptr_numbers: (%d)\n", &ptr_numbers, *ptr_numbers);
   }
 }
 
