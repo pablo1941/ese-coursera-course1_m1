@@ -1,10 +1,9 @@
 /**************************************************************************/ /**
                                                                               * @file stats.h
-                                                                              * @file stats.h
                                                                               * @brief Example C programming File
                                                                               *
                                                                               * @author <Pablo Rodriguez>
-                                                                              * @date 2024-12-04
+                                                                              * @date 2024-12-04 / 2024-12-10
                                                                               *
                                                                               * A simple C-Programming example that exhibits a handful of basic c-programming
                                                                               * features to show how to calculate some statistics on a set of numbers:
@@ -46,10 +45,10 @@ void main()
                               201, 6, 12, 60, 8, 2, 5, 67,
                               7, 87, 250, 230, 99, 3, 100, 90};
   unsigned char value_min, value_max, value_mean, value_median = 0;
+  unsigned char *ptr_sort;
+  ptr_sort = malloc(SIZE * sizeof(unsigned char));
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
-  printf("Hola printf, soy Pablo:( %d )\n", test[0]);
-
   value_min = find_minimum(test, SIZE);
   printf("** Result find_minimum: ( %d ) **\n", value_min);
 
@@ -59,14 +58,24 @@ void main()
   value_mean = find_mean(test, SIZE);
   printf("** Result find_mean: ( %d ) **\n", value_mean);
 
-  sort_array(test, SIZE);
+  ptr_sort = sort_array(test, SIZE);
+
+  printf("** Result print_array: [");
+  for (int k = 0; k < SIZE; k++)
+  {
+    printf(" %d", ptr_sort[k]);
+  }
+  printf("] **\n");
+
+  print_array(ptr_sort, SIZE);
 }
 
 /* sort_array function */
-void sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
+unsigned char *sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
 {
   unsigned char value, max_ant, pos = 0;
   unsigned char array_thor[SIZE] = {};
+  unsigned char *ptr_return;
 
   if (ptr_numbers == NULL)
   {
@@ -100,15 +109,27 @@ void sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
     // Update values
     ptr_numbers[pos] = 0;
     array_thor[j] = value;
-    printf("sort_array: iteration: (%d), array_thor: (%d), max_ant (%d) \n", j, array_thor[j], max_ant);
+    // printf("sort_array: iteration: (%d), array_thor: (%d), max_ant (%d) \n", j, array_thor[j], max_ant);
     max_ant = value;
     value = 0;
   }
+  ptr_numbers = array_thor;
+
+  return ptr_numbers;
 }
 /* print_statistics function */
 void print_statistics(unsigned char *ptr_numbers, unsigned char length_ptr) {}
 /* print_array function */
-void print_array(unsigned char *ptr_numbers, unsigned char length_ptr) {}
+void print_array(unsigned char *ptr_numbers, unsigned char length_ptr)
+{
+  unsigned char array2print[length_ptr];
+  printf("** Result print_array: [");
+  for (int i = 0; i < length_ptr; i++)
+  {
+    printf(" %d", ptr_numbers[i]);
+  }
+  printf("] **\n");
+}
 /* find_minimum function */
 unsigned char find_minimum(unsigned char *ptr_numbers, unsigned char length_ptr)
 {
