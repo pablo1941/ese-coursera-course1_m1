@@ -46,7 +46,7 @@ void main()
                               7, 87, 250, 230, 99, 3, 100, 90};
   unsigned char value_min, value_max, value_mean, value_median = 0;
   unsigned char *ptr_sort;
-  ptr_sort = malloc(SIZE * sizeof(unsigned char));
+  ptr_sort = test;
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
   value_min = find_minimum(test, SIZE);
@@ -58,24 +58,22 @@ void main()
   value_mean = find_mean(test, SIZE);
   printf("** Result find_mean: ( %d ) **\n", value_mean);
 
-  ptr_sort = sort_array(test, SIZE);
-
-  printf("** Result print_array: [");
-  for (int k = 0; k < SIZE; k++)
-  {
-    printf(" %d", ptr_sort[k]);
-  }
-  printf("] **\n");
+  sort_array(ptr_sort, SIZE);
 
   print_array(ptr_sort, SIZE);
 }
 
 /* sort_array function */
-unsigned char *sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
+void sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
 {
   unsigned char value, max_ant, pos = 0;
   unsigned char array_thor[SIZE] = {};
-  unsigned char *ptr_return;
+
+  // Copy array in local scope
+  for (int m = 0; m < length_ptr; m++)
+  {
+    array_thor[m] = ptr_numbers[m];
+  }
 
   if (ptr_numbers == NULL)
   {
@@ -83,39 +81,36 @@ unsigned char *sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
   }
 
   for (int j = 0; j < length_ptr; j++)
-  // for (int j = 0; j < 15; j++)
+  // for (int j = 0; j < 10; j++)
   {
     for (int i = 0; i < length_ptr; i++)
     {
       if (j == 0)
       {
-        if ((ptr_numbers[i] >= value))
+        if ((array_thor[i] >= value))
         {
-          value = ptr_numbers[i];
+          value = array_thor[i];
           pos = i;
         }
       }
       else
       {
-        if ((ptr_numbers[i] >= value) && (ptr_numbers[i] <= max_ant))
-        // if ( (ptr_numbers[i] <= max_ant))
+        if ((array_thor[i] >= value) && (array_thor[i] <= max_ant))
         {
-          value = ptr_numbers[i];
+          value = array_thor[i];
           pos = i;
+          // printf("value if: (%d), ptr_numbers (%d), pos: (%d) \n", value, array_thor[i], pos);
         }
       }
-      // printf("find_maximum sort: iteration{j,i}: (%d,%d), ptr_numbers: (%d), value: (%d), previous max:(%d) \n", j, i, ptr_numbers[i], value, max_ant);
+      // printf("find_maximum sort: iteration{j,i}: (%d,%d), ptr_numbers: (%d), value: (%d), previous max:(%d) \n", j, i, array_thor[i], value, max_ant);
     }
     // Update values
-    ptr_numbers[pos] = 0;
-    array_thor[j] = value;
-    // printf("sort_array: iteration: (%d), array_thor: (%d), max_ant (%d) \n", j, array_thor[j], max_ant);
+    array_thor[pos] = 0;
+    ptr_numbers[j] = value;
+    // printf("sort_array: iteration: (%d), array_thor: (%d), max_ant (%d) \n", j, ptr_numbers[j], max_ant);
     max_ant = value;
     value = 0;
   }
-  ptr_numbers = array_thor;
-
-  return ptr_numbers;
 }
 /* print_statistics function */
 void print_statistics(unsigned char *ptr_numbers, unsigned char length_ptr) {}
