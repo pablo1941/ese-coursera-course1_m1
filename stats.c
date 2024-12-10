@@ -1,24 +1,4 @@
-/**************************************************************************/ /**
-                                                                              * @file stats.h
-                                                                              * @brief Example C programming File
-                                                                              *
-                                                                              * @author <Pablo Rodriguez>
-                                                                              * @date 2024-12-04 / 2024-12-10
-                                                                              *
-                                                                              * A simple C-Programming example that exhibits a handful of basic c-programming
-                                                                              * features to show how to calculate some statistics on a set of numbers:
-                                                                              *     -Mean
-                                                                              *     -Maximum
-                                                                              *     -Minimum
-                                                                              *     -Median
-                                                                              *
-                                                                              * On the other hand, is implemented a sort function to organize data from
-                                                                              * largest to smallest value.
-                                                                              *
-                                                                              *    Note: Is an example to learn concepts about functions, operators and sw
-                                                                              *          tools.
-                                                                              *
-                                                                              *****************************************************************************/
+
 /******************************************************************************
  * Copyright (C) 2017 by Alex Fosdick - University of Colorado
  *
@@ -28,13 +8,31 @@
  * software. Alex Fosdick and the University of Colorado are not liable for any
  * misuse of this material.
  *
+ * @file stats.h
+ * @brief Example C programming File
+ *
+ * @author <Pablo Rodriguez>
+ * @date 2024-12-04 / 2024-12-10
+ *
+ * A simple C-Programming example that exhibits a handful of basic c-programming
+ * features to show how to calculate some statistics on a set of numbers:
+ *     -Mean
+ *     -Maximum
+ *     -Minimum
+ *     -Median
+ * On the other hand, is implemented a sort function to organize data from
+ * largest to smallest value.
+ *
+ *    Note: Is an example to learn concepts about functions, operators and sw
+ *          tools.
+ *
  *****************************************************************************/
 #include <stdio.h>
 #include "stats.h"
 
 /* Size of the Data Set */
 #define SIZE (40)
-// #define NULL (0)
+#define NULL (0)
 
 void main()
 {
@@ -61,6 +59,9 @@ void main()
   sort_array(ptr_sort, SIZE);
 
   print_array(ptr_sort, SIZE);
+
+  value_median = find_median(ptr_sort, SIZE);
+  printf("** Result find_median: ( %d ) **\n", value_median);
 }
 
 /* sort_array function */
@@ -181,28 +182,23 @@ unsigned char find_maximum(unsigned char *ptr_numbers, unsigned char length_ptr)
 /* find_median function */
 unsigned char find_median(unsigned char *ptr_numbers, unsigned char length_ptr)
 {
-  unsigned char value = 0;
+  unsigned char value, median, index_median = 0;
 
   if (ptr_numbers == NULL)
   {
     return 0;
   }
 
-  for (int i = 0; i < length_ptr; i++)
+  index_median = SIZE / 2;
+  if (SIZE % 2 == 0)
   {
-    if (i == 0)
-    {
-      value = *ptr_numbers;
-    }
-
-    if (*ptr_numbers >= value)
-    {
-      value = *ptr_numbers;
-    }
-    // printf("find_maximum: itaration: (%d), value: (%d) \n", i, *ptr_numbers);
-    ptr_numbers++;
+    median = (ptr_numbers[index_median - 1] + ptr_numbers[index_median]) / 2;
   }
-  return value;
+  else if (SIZE % 2 == 1)
+  {
+    median = (ptr_numbers[index_median]);
+  }
+  return median;
 }
 /* find_mean function */
 unsigned char find_mean(unsigned char *ptr_numbers, unsigned char length_ptr)
