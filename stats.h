@@ -1,9 +1,18 @@
-/**************************************************************************//**
+
+/******************************************************************************
+ * Copyright (C) 2017 by Alex Fosdick - University of Colorado
+ *
+ * Redistribution, modification or use of this software in source or binary
+ * forms is permitted as long as the files maintain this copyright. Users are
+ * permitted to modify this and use it to learn about the field of embedded
+ * software. Alex Fosdick and the University of Colorado are not liable for any
+ * misuse of this material.
+ *
  * @file stats.h
  * @brief Example C programming File
- * 
+ *
  * @author <Pablo Rodriguez>
- * @date 2024-12-04
+ * @date 2024-12-04 / 2024-12-10
  *
  * A simple C-Programming example that exhibits a handful of basic c-programming
  * features to show how to calculate some statistics on a set of numbers:
@@ -11,7 +20,6 @@
  *     -Maximum
  *     -Minimum
  *     -Median
- * 
  * On the other hand, is implemented a sort function to organize data from
  * largest to smallest value.
  *
@@ -19,21 +27,11 @@
  *          tools.
  *
  *****************************************************************************/
-/******************************************************************************
- * Copyright (C) 2017 by Alex Fosdick - University of Colorado
- *
- * Redistribution, modification or use of this software in source or binary
- * forms is permitted as long as the files maintain this copyright. Users are 
- * permitted to modify this and use it to learn about the field of embedded
- * software. Alex Fosdick and the University of Colorado are not liable for any
- * misuse of this material. 
- *
- *****************************************************************************/
 
 #ifndef __STATS_H__
 #define __STATS_H__
 
-/* Add Your Declarations and Function Comments here */ 
+/* Add Your Declarations and Function Comments here */
 
 /******************************************************************************
  * Function: find_mean
@@ -42,10 +40,10 @@
  * Parameters:
  *     int * ptr_numbers: Pointer to a data set
  *     int length_ptr: Number of items in data set
- * Return: 
+ * Return:
  *     Mean value of the numbers provided.
  *****************************************************************************/
-unsigned char find_mean(unsigned char * ptr_numbers, unsigned char length_ptr);
+unsigned char find_mean(unsigned char *ptr_numbers, unsigned char length_ptr);
 /******************************************************************************
  * Function: find_median
  * Description:
@@ -53,10 +51,10 @@ unsigned char find_mean(unsigned char * ptr_numbers, unsigned char length_ptr);
  * Parameters:
  *     int * ptr_numbers: Pointer to a data set
  *     int length_ptr: Number of items in data set
- * Return: 
+ * Return:
  *     Median value of the numbers provided.
  *****************************************************************************/
-unsigned char find_median(unsigned char * ptr_numbers, unsigned char length_ptr);
+unsigned char find_median(unsigned char *ptr_numbers, unsigned char length_ptr);
 /******************************************************************************
  * Function: find_maximum
  * Description:
@@ -64,10 +62,10 @@ unsigned char find_median(unsigned char * ptr_numbers, unsigned char length_ptr)
  * Parameters:
  *     int * ptr_numbers: Pointer to a data set
  *     int length_ptr: Number of items in data set
- * Return: 
+ * Return:
  *     Maximum value of the numbers provided.
  *****************************************************************************/
-unsigned char find_maximum(unsigned char * ptr_numbers, unsigned char length_ptr);
+unsigned char find_maximum(unsigned char *ptr_numbers, unsigned char length_ptr);
 /******************************************************************************
  * Function: find_minimum
  * Description:
@@ -75,10 +73,10 @@ unsigned char find_maximum(unsigned char * ptr_numbers, unsigned char length_ptr
  * Parameters:
  *     int * ptr_numbers: Pointer to a data set
  *     int length_ptr: Number of items in data set
- * Return: 
+ * Return:
  *     Minimum value of the numbers provided.
  *****************************************************************************/
-unsigned char find_minimum(unsigned char * ptr_numbers, unsigned char length_ptr);
+unsigned char find_minimum(unsigned char *ptr_numbers, unsigned char length_ptr);
 
 /******************************************************************************
  * Function: print_array
@@ -87,10 +85,10 @@ unsigned char find_minimum(unsigned char * ptr_numbers, unsigned char length_ptr
  * Parameters:
  *     int * ptr_numbers: Pointer to a data set
  *     int length_ptr: Number of items in data set
- * Return: 
+ * Return:
  *     Empty.
  *****************************************************************************/
-void print_array(unsigned char * ptr_numbers, unsigned char length_ptr);
+void print_array(unsigned char *ptr_numbers, unsigned char length_ptr);
 
 /******************************************************************************
  * Function: print_statistics
@@ -100,10 +98,10 @@ void print_array(unsigned char * ptr_numbers, unsigned char length_ptr);
  * Parameters:
  *     int * ptr_numbers: Pointer to a data set
  *     int length_ptr: Number of items in data set
- * Return: 
+ * Return:
  *     Empty.
  *****************************************************************************/
-void print_statistics(unsigned char * ptr_numbers, unsigned char length_ptr);
+void print_statistics(unsigned char *ptr_numbers, unsigned char length_ptr);
 
 /******************************************************************************
  * Function: sort_array
@@ -112,9 +110,9 @@ void print_statistics(unsigned char * ptr_numbers, unsigned char length_ptr);
  * Parameters:
  *     int * ptr_numbers: Pointer to a data set
  *     int length_ptr: Number of items in data set
- * Return: 
+ * Return:
  *     Empty.
  *****************************************************************************/
-void sort_array(unsigned char * ptr_numbers, unsigned char length_ptr);
+void sort_array(unsigned char *ptr_numbers, unsigned char length_ptr);
 
 #endif /* __STATS_H__ */
