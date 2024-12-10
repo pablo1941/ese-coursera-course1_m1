@@ -33,6 +33,7 @@
 /* Size of the Data Set */
 #define SIZE (40)
 #define NULL (0)
+#define SIZE_STATS (4)
 
 void main()
 {
@@ -42,26 +43,21 @@ void main()
                               200, 122, 150, 90, 92, 87, 177, 244,
                               201, 6, 12, 60, 8, 2, 5, 67,
                               7, 87, 250, 230, 99, 3, 100, 90};
-  unsigned char value_min, value_max, value_mean, value_median = 0;
-  unsigned char *ptr_sort;
-  ptr_sort = test;
   /* Other Variable Declarations Go Here */
+  unsigned char value_min, value_max, value_mean, value_median = 0;
+  unsigned char *ptr_sort, *ptr_stats;
+  ptr_sort = test;
   /* Statistics and Printing Functions Go Here */
   value_min = find_minimum(test, SIZE);
-  printf("** Result find_minimum: ( %d ) **\n", value_min);
-
   value_max = find_maximum(test, SIZE);
-  printf("** Result find_maximum: ( %d ) **\n", value_max);
-
   value_mean = find_mean(test, SIZE);
-  printf("** Result find_mean: ( %d ) **\n", value_mean);
-
   sort_array(ptr_sort, SIZE);
-
-  print_array(ptr_sort, SIZE);
-
   value_median = find_median(ptr_sort, SIZE);
-  printf("** Result find_median: ( %d ) **\n", value_median);
+
+  unsigned char statitistics[SIZE_STATS] = {value_min, value_max, value_mean, value_median};
+  ptr_stats = statitistics;
+  print_array(ptr_sort, SIZE);
+  print_statistics(ptr_stats, SIZE_STATS);
 }
 
 /* sort_array function */
@@ -114,7 +110,13 @@ void sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
   }
 }
 /* print_statistics function */
-void print_statistics(unsigned char *ptr_numbers, unsigned char length_ptr) {}
+void print_statistics(unsigned char *ptr_numbers, unsigned char length_ptr)
+{
+  printf("** Result find_minimum: ( %d ) **\n", ptr_numbers[0]);
+  printf("** Result find_maximum: ( %d ) **\n", ptr_numbers[1]);
+  printf("** Result find_mean: ( %d ) **\n", ptr_numbers[2]);
+  printf("** Result find_median: ( %d ) **\n", ptr_numbers[3]);
+}
 /* print_array function */
 void print_array(unsigned char *ptr_numbers, unsigned char length_ptr)
 {
