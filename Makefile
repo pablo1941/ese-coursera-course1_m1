@@ -52,7 +52,7 @@ CPU =cortex-m4
 ARCH =arm
 SPECS =nosys.specs
 LINKER_FILE =msp432p401r.lds
-TARGET =c1m2
+TARGET =c1m4
 
 
 PLATFORM = MSP432

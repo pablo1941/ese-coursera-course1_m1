@@ -27,7 +27,6 @@
  *          tools.
  *
  *****************************************************************************/
-#include <stdio.h>
 #include "stats.h"
 
 /* Size of the Data Set */
@@ -64,7 +63,7 @@ void main()
 void sort_array(unsigned char *ptr_numbers, unsigned char length_ptr)
 {
   unsigned char value, max_ant, pos = 0;
-  unsigned char array_thor[SIZE] = {};
+  unsigned char array_thor[SIZE];
 
   // Copy array in local scope
   for (int m = 0; m < length_ptr; m++)

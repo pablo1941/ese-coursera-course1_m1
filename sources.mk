@@ -18,6 +18,9 @@ SOURCES_MSP432 = interrupts_msp432p401r_gcc.c \
 			main.c
 
 SOURCES_HOST = memory.c \
+			data.c \
+			course1.c \
+			stats.c \
 			main.c
 # Add your include paths to this variable
 INCLUDES_DIR = -I../src/\

@@ -10,16 +10,16 @@
  *****************************************************************************/
 /**
  * @file main.c
- * @brief Main entry point to the C1M2 Assessment
+ * @brief Final Assessment
  *
- * This file contains the main code for the C1M2 assesment. Students
- * are not to change any of the code, they are instead supposed to compile
- * these files with their makefile.
+ * This file contains the main function to invoke course1();
  *
  * @author Pablo Rodriguez
- * @date January 25 2025
+ * @date January 25, 2025
  *
  */
+
+#include "course1.c"
 
 /* A pretty boring main file */
 int main(void)

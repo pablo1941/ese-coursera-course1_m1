@@ -17,7 +17,7 @@
  *
  */
 
-#include <stdint.h>
+#include "stdint.h"
 #include "course1.h"
 #include "platform.h"
 #include "memory.h"
